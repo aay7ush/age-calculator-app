@@ -8,7 +8,7 @@ An age calculator app built with HTML, Tailwind CSS, and JavaScript. Calculate y
 
 ## Live Site
 
-Check out the live site [here](https://www.example.com/age-calculator).
+Check out the live site [here](https://age-calculat0r-4pp.netlify.app/).
 
 ## Features
 
@@ -20,7 +20,7 @@ Check out the live site [here](https://www.example.com/age-calculator).
 
 ## Usage
 
-1. Open the live site [here](https://www.example.com/age-calculator).
+1. Open the live site [here](https://age-calculat0r-4pp.netlify.app/).
 2. Enter your birth date in the provided input fields for day, month, and year.
 3. Click the "Down Arrow" button to calculate your age.
 4. The app will validate the entered date to ensure it is valid.

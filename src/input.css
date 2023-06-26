@@ -3,3 +3,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  .age {
+    @apply text-5xl italic font-extrabold text-clr-off-black md:text-6xl;
+  }
+
+  .dob {
+    @apply w-20 pl-3 text-lg border-2 rounded-md h-11 text-clr-off-black outline-clr-purple md:w-24;
+  }
+
+  .error {
+    @apply italic tracking-tight normal-case;
+  }
+}

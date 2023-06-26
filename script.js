@@ -17,57 +17,6 @@ inputYear.addEventListener('input', () => {
   }
 })
 
-// const currentDate = new Date()
-
-// form.addEventListener('submit', (e) => {
-//   e.preventDefault()
-
-//   let birthday = {}
-
-//   inputs.forEach((input) => {
-//     if (!input.value) {
-//       showErrorMessage(input, 'This field is required')
-//     } else {
-//       if (input.id === 'input-day' && (input.value > 31 || input.value < 1)) {
-//         showErrorMessage(input, 'Must be a valid day')
-//       } else if (
-//         input.id === 'input-month' &&
-//         (input.value > 12 || input.value < 1)
-//       ) {
-//         showErrorMessage(input, 'Must be a valid month')
-//       } else if (
-//         input.id === 'input-year' &&
-//         input.value > currentDate.getFullYear()
-//       ) {
-//         showErrorMessage(input, 'Must be in the past')
-//       } else {
-//         removeErrorMessage(input)
-
-//         if (input.id === 'input-day') {
-//           birthday.day = +input.value
-//         } else if (input.id === 'input-month') {
-//           birthday.month = +input.value
-//         } else {
-//           birthday.year = +input.value
-//         }
-//       }
-//     }
-//   })
-
-//   if (inputDay.value && inputMonth.value && inputYear.value) {
-//     if (isDateValid(birthday.day, birthday.month, birthday.year)) {
-//       let [days, months, years] = calculateAge(
-//         birthday.day,
-//         birthday.month,
-//         birthday.year
-//       )
-//       renderAge(days, months, years)
-//     } else {
-//       showErrorMessage(inputDay, 'Must be a valid date')
-//     }
-//   }
-// })
-
 let birthday = {}
 
 inputDay.addEventListener('input', () => {
@@ -75,7 +24,6 @@ inputDay.addEventListener('input', () => {
     showErrorMessage(inputDay, 'Must be a valid day')
   } else {
     removeErrorMessage(inputDay)
-    birthday.day = +inputDay.value
   }
 })
 
@@ -84,7 +32,6 @@ inputMonth.addEventListener('input', () => {
     showErrorMessage(inputMonth, 'Must be a valid month')
   } else {
     removeErrorMessage(inputMonth)
-    birthday.month = +inputMonth.value
   }
 })
 
@@ -93,12 +40,17 @@ inputYear.addEventListener('input', () => {
     showErrorMessage(inputYear, 'Must be in the past')
   } else {
     removeErrorMessage(inputYear)
-    birthday.year = +inputYear.value
   }
 })
 
 form.addEventListener('submit', (e) => {
   e.preventDefault()
+
+  birthday.day = +inputDay.value
+  birthday.month = +inputMonth.value
+  birthday.year = +inputYear.value
+
+  console.log(birthday)
 
   inputs.forEach((input) => {
     if (!input.value) {
@@ -109,6 +61,7 @@ form.addEventListener('submit', (e) => {
   })
 
   if (inputDay.value && inputMonth.value && inputYear.value) {
+    console.log(isDateValid(birthday.day, birthday.month, birthday.year))
     if (isDateValid(birthday.day, birthday.month, birthday.year)) {
       let [years, months, days] = calculateAge(
         birthday.day,
@@ -118,9 +71,15 @@ form.addEventListener('submit', (e) => {
       renderAge(years, months, days)
       inputsReset()
     } else {
-      showErrorMessage(inputDay, 'Must be a valid date')
-      showErrorMessage(inputMonth, '')
-      showErrorMessage(inputYear, '')
+      if (birthday.year > new Date().getFullYear()) {
+        showErrorMessage(inputDay, 'Must be a valid date')
+        showErrorMessage(inputMonth, '')
+        showErrorMessage(inputYear, 'Must be in the past')
+      } else {
+        showErrorMessage(inputDay, 'Must be a valid date')
+        showErrorMessage(inputMonth, '')
+        showErrorMessage(inputYear, '')
+      }
     }
   }
 })
@@ -151,11 +110,11 @@ function renderAge(years, months, days) {
 }
 
 function isDateValid(dd, mm, yyyy) {
-  if (mm < 1 || mm > 12) {
+  const date = new Date(yyyy, mm - 1, dd)
+
+  if (yyyy > new Date().getFullYear()) {
     return false
   }
-
-  const date = new Date(yyyy, mm - 1, dd)
 
   return (
     date.getFullYear() === yyyy &&
