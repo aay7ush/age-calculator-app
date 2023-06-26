@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <title>Age Calculator</title>
+    <link href="/dist/output.css" rel="stylesheet" />
+    <script src="script.js" defer></script>
+  </head>
+  <body
+    class="text-[32px] bg-clr-off-white min-h-[100vh] grid place-content-center"
+  >
+    <main>
+      <article
+        class="wrapper bg-clr-white max-w-[90vw] mx-auto px-6 py-8 rounded-2xl rounded-br-[5rem] md:min-w-[480px] md:p-8 md:rounded-br-[8rem]"
+      >
+        <form action="#">
+          <div
+            class="flex gap-2 text-xs tracking-widest uppercase date text-clr-smokey-grey md:gap-5"
+          >
+            <div class="flex flex-col gap-1">
+              <label for="day">Day</label>
+              <input
+                type="number"
+                name="day"
+                id="input-day"
+                placeholder="DD"
+                class="w-20 pl-3 text-lg border-2 rounded-md h-11 border-clr-light-grey text-clr-off-black outline-clr-purple md:w-24"
+              />
+              <small
+                class="hidden italic tracking-tight normal-case text-clr-light-red"
+                >This field is required</small
+              >
+            </div>
+            <div class="flex flex-col gap-1">
+              <label for="month">Month</label>
+              <input
+                type="number"
+                name="month"
+                id="input-month"
+                placeholder="MM"
+                class="w-20 pl-3 text-lg border-2 rounded-md h-11 border-clr-light-grey text-clr-off-black outline-clr-purple md:w-24"
+              />
+              <small
+                class="hidden italic tracking-tight normal-case text-clr-light-red"
+                >This field is required</small
+              >
+            </div>
+            <div class="flex flex-col gap-1">
+              <label for="year">Year</label>
+              <input
+                type="number"
+                name="year"
+                id="input-year"
+                placeholder="YYYY"
+                class="w-20 pl-3 text-lg border-2 rounded-md h-11 border-clr-light-grey text-clr-off-black outline-clr-purple md:w-24"
+              />
+              <small
+                class="hidden italic tracking-tight normal-case text-clr-light-red"
+                >This field is required</small
+              >
+            </div>
+          </div>
+          <div class="relative my-12 md:my-7">
+            <hr class="border border-clr-light-grey" />
+            <button
+              id="submit"
+              type="submit"
+              class="absolute left-[50%] -translate-x-[50%] -top-5 md:left-[85%] md:-translate-x-0 md:-top-8"
+            >
+              <img
+                src="./assets/images/icon-arrow.svg"
+                alt=""
+                class="w-12 p-3 transition duration-300 rounded-full bg-clr-purple hover:bg-clr-off-black md:w-16 md:p-4"
+              />
+            </button>
+          </div>
+        </form>
+        <h1
+          class="text-5xl italic font-extrabold text-clr-off-black md:text-6xl"
+        >
+          <span id="years" class="text-clr-purple">--</span> years
+        </h1>
+        <h2
+          class="text-5xl italic font-extrabold text-clr-off-black md:text-6xl"
+        >
+          <span id="months" class="text-clr-purple">--</span> months
+        </h2>
+        <h3
+          class="text-5xl italic font-extrabold text-clr-off-black md:text-6xl"
+        >
+          <span id="days" class="text-clr-purple">--</span> days
+        </h3>
+      </article>
+    </main>
+  </body>
+</html>
